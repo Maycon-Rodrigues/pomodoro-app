@@ -11,9 +11,7 @@ function App() {
       isCountdown &&
       workTime > 0 &&
       setInterval(() => setworkTime(workTime - 1), 1000);
-    return () => {
-      clearInterval(timer);
-    };
+    return () => clearInterval(timer);
   }, [isCountdown, workTime]);
 
   useEffect(() => {
@@ -26,8 +24,11 @@ function App() {
   }, [isCountdown, workTime, breakTime]);
 
   const handleStart = () => {
-    console.log('click');
     setIsCountdown(!isCountdown);
+  };
+
+  const handleReset = () => {
+    resetCountdown();
   };
 
   const resetCountdown = () => {
@@ -40,15 +41,19 @@ function App() {
     resetCountdown();
   }
 
-  console.log(isCountdown);
-
   return (
     <div className="App">
       <div className="flexRow">
         <span className="title">working session</span>
+
         <span className="timer">{workTime}</span>
+
         <button onClick={handleStart} className="button">
           {isCountdown && workTime > 0 ? 'Pause' : 'Start'}
+        </button>
+
+        <button onClick={handleReset} className="button">
+          Reset
         </button>
       </div>
       <p>break session: {breakTime}</p>

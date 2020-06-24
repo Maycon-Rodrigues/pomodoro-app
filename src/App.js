@@ -45,9 +45,11 @@ function App() {
   return (
     <div className="App">
       <div className="flexRow">
-        <span className="title">working session</span>
+        <span className="title">
+          {workTime === 0 ? 'break session' : 'working session'}
+        </span>
 
-        <span className="timer">{workTime}</span>
+        <span className="timer">{workTime === 0 ? breakTime : workTime}</span>
 
         <button
           onClick={handleStart}
@@ -61,7 +63,6 @@ function App() {
           Reset
         </button>
       </div>
-      <p>break session: {breakTime}</p>
     </div>
   );
 }

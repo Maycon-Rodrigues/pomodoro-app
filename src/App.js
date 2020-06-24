@@ -38,7 +38,8 @@ function App() {
   };
 
   if (isCountdown === true && workTime === 0 && breakTime === 0) {
-    resetCountdown();
+    setworkTime(10);
+    setbreakTime(5);
   }
 
   return (
@@ -48,7 +49,11 @@ function App() {
 
         <span className="timer">{workTime}</span>
 
-        <button onClick={handleStart} className="button">
+        <button
+          onClick={handleStart}
+          className="button"
+          disabled={workTime === 0 && true}
+        >
           {isCountdown && workTime > 0 ? 'Pause' : 'Start'}
         </button>
 

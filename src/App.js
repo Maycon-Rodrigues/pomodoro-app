@@ -51,12 +51,8 @@ function App() {
 
         <span className="timer">{workTime === 0 ? breakTime : workTime}</span>
 
-        <button
-          onClick={handleStart}
-          className="button"
-          disabled={workTime === 0 && true}
-        >
-          {isCountdown && workTime > 0 ? 'Pause' : 'Start'}
+        <button onClick={handleStart} className="button">
+          {isCountdown ? 'Pause' : 'Start'}
         </button>
 
         <button onClick={handleReset} className="button">

@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './app.css';
 
 function App() {
+  const [workTime, setworkTime] = useState(10);
+  const [breakTime, setbreakTime] = useState(5);
+  const [isCountdown, setIsCountdown] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="flexRow">
+        <span className="title">working session</span>
+        <span className="timer">{workTime}</span>
+        <button onClick={handleStart} className="button">
+          {isCountdown && workTime > 0 ? 'Pause' : 'Start'}
+        </button>
+      </div>
+      <p>break session: {breakTime}</p>
     </div>
   );
 }

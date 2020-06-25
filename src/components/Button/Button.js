@@ -4,7 +4,10 @@ import './style.css';
 
 export default function Button({ ...props }) {
   return (
-    <button {...props} className="button">
+    <button
+      {...props}
+      className={props.name === 'Reset' ? 'buttonRed' : 'button'}
+    >
       {props.name}
     </button>
   );

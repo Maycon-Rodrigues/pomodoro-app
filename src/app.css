@@ -1,3 +1,8 @@
+:root {
+  --primary: rgb(112, 34, 202);
+  --alert: rgb(245, 35, 35);
+}
+
 html,
 body {
   margin: 0;
@@ -5,14 +10,17 @@ body {
 }
 
 .flexRow {
+  height: 100vh;
+  width: 200px;
   display: flex;
   flex-direction: column;
-  width: 200px;
   align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .title {
   font-size: large;
   font-weight: 700;
-  color: blueviolet;
+  color: var(--primary);
 }

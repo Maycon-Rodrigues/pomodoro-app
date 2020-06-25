@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './app.css';
 import { convertTimer } from './helper/converter';
+import Button from './components/Button/Button';
 
 function App() {
   const [workTime, setworkTime] = useState(1500);
@@ -57,13 +58,9 @@ function App() {
           {workTime === 0 ? breakTimeConverted : workTimeConverted}
         </span>
 
-        <button onClick={handleStart} className="button">
-          {isCountdown ? 'Pause' : 'Start'}
-        </button>
+        <Button name={isCountdown ? 'Pause' : 'Start'} onClick={handleStart} />
 
-        <button onClick={handleReset} className="button">
-          Reset
-        </button>
+        <Button name="Reset" onClick={handleReset} />
       </div>
     </div>
   );

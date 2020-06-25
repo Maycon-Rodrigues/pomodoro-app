@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './app.css';
+import { convertTimer } from './helper/converter';
 
 function App() {
-  const [workTime, setworkTime] = useState(10);
-  const [breakTime, setbreakTime] = useState(5);
+  const [workTime, setworkTime] = useState(1500);
+  const [breakTime, setbreakTime] = useState(300);
   const [isCountdown, setIsCountdown] = useState(false);
+
+  const workTimeConverted = convertTimer(workTime);
+  const breakTimeConverted = convertTimer(breakTime);
 
   useEffect(() => {
     const timer =
@@ -33,13 +37,13 @@ function App() {
 
   const resetCountdown = () => {
     setIsCountdown(false);
-    setworkTime(10);
-    setbreakTime(5);
+    setworkTime(1500);
+    setbreakTime(300);
   };
 
   if (isCountdown === true && workTime === 0 && breakTime === 0) {
-    setworkTime(10);
-    setbreakTime(5);
+    setworkTime(workTime);
+    setbreakTime(breakTime);
   }
 
   return (
@@ -49,7 +53,9 @@ function App() {
           {workTime === 0 ? 'break session' : 'working session'}
         </span>
 
-        <span className="timer">{workTime === 0 ? breakTime : workTime}</span>
+        <span className="timer">
+          {workTime === 0 ? breakTimeConverted : workTimeConverted}
+        </span>
 
         <button onClick={handleStart} className="button">
           {isCountdown ? 'Pause' : 'Start'}

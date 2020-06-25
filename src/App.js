@@ -56,7 +56,7 @@ function App() {
     <div className="container">
       <Card>
         <span className="title">
-          {workTime === 0 ? 'break session' : 'working session'}
+          {workTime === 0 ? 'Break Session' : 'Working Session'}
         </span>
 
         <Display>

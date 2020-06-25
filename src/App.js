@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './app.css';
 import { convertTimer } from './helper/converter';
 import Button from './components/Button/Button';
+import Display from './components/Display/Display';
 
 function App() {
   const [workTime, setworkTime] = useState(1500);
@@ -54,9 +55,9 @@ function App() {
           {workTime === 0 ? 'break session' : 'working session'}
         </span>
 
-        <span className="timer">
+        <Display>
           {workTime === 0 ? breakTimeConverted : workTimeConverted}
-        </span>
+        </Display>
 
         <Button name={isCountdown ? 'Pause' : 'Start'} onClick={handleStart} />
 

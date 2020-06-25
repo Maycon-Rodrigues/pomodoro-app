@@ -1,6 +1,8 @@
 .timer {
+  display: flex;
   padding: 10px 0px 10px 0px;
   font-size: 6rem;
   font-weight: 300;
+  align-items: center;
   color: var(--secondary);
 }

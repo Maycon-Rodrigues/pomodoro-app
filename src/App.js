@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import './app.css';
+
 import { convertTimer } from './helper/converter';
+
 import Button from './components/Button/Button';
 import Display from './components/Display/Display';
+import Card from './components/Card/Card';
+
+import './app.css';
 
 function App() {
-  const [workTime, setworkTime] = useState(1500);
-  const [breakTime, setbreakTime] = useState(300);
+  const [workTime, setWorkTime] = useState(1500);
+  const [breakTime, setBreakTime] = useState(300);
   const [isCountdown, setIsCountdown] = useState(false);
 
   const workTimeConverted = convertTimer(workTime);
@@ -16,7 +20,7 @@ function App() {
     const timer =
       isCountdown &&
       workTime > 0 &&
-      setInterval(() => setworkTime(workTime - 1), 1000);
+      setInterval(() => setWorkTime(workTime - 1), 1000);
     return () => clearInterval(timer);
   }, [isCountdown, workTime]);
 
@@ -25,7 +29,7 @@ function App() {
       isCountdown &&
       workTime === 0 &&
       breakTime > 0 &&
-      setInterval(() => setbreakTime(breakTime - 1), 1000);
+      setInterval(() => setBreakTime(breakTime - 1), 1000);
     return () => clearInterval(timer);
   }, [isCountdown, workTime, breakTime]);
 
@@ -39,18 +43,18 @@ function App() {
 
   const resetCountdown = () => {
     setIsCountdown(false);
-    setworkTime(1500);
-    setbreakTime(300);
+    setWorkTime(1500);
+    setBreakTime(300);
   };
 
   if (isCountdown === true && workTime === 0 && breakTime === 0) {
-    setworkTime(workTime);
-    setbreakTime(breakTime);
+    setWorkTime(workTime);
+    setBreakTime(breakTime);
   }
 
   return (
-    <div className="App">
-      <div className="flexRow">
+    <div className="container">
+      <Card>
         <span className="title">
           {workTime === 0 ? 'break session' : 'working session'}
         </span>
@@ -62,7 +66,7 @@ function App() {
         <Button name={isCountdown ? 'Pause' : 'Start'} onClick={handleStart} />
 
         <Button name="Reset" onClick={handleReset} />
-      </div>
+      </Card>
     </div>
   );
 }

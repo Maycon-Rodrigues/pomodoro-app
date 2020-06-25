@@ -1,3 +1,9 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .flexRow {
   display: flex;
   flex-direction: column;
@@ -14,15 +20,4 @@
 .timer {
   padding: 10px 0px 10px 0px;
   font-size: 25px;
-}
-
-.button {
-  width: 50px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: crimson;
-  color: rgb(255, 255, 255);
-  transition: 1s;
 }

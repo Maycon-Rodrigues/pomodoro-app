@@ -8,6 +8,8 @@
   outline: none;
 
   transition: 0.5s;
+
+  background-color: var(--btn);
 }
 .buttonSession:hover {
   background-color: var(--primary);

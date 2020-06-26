@@ -6,6 +6,7 @@ import Button from './components/Button/Button';
 import Display from './components/Display/Display';
 import Card from './components/Card/Card';
 import SessionButton from './components/SessionButon/SessionButton';
+import CardFooter from './components/CardFooter/CardFooter';
 
 import './app.css';
 
@@ -18,6 +19,8 @@ function App() {
 
   const workTimeConverted = convertTimer(workTime);
   const breakTimeConverted = convertTimer(breakTime);
+
+  const breakTimeDisplay = changeBreakTime / 60;
 
   useEffect(() => {
     const timer =
@@ -62,6 +65,16 @@ function App() {
     changeWorkTime > 60 && setChangeWorkTime(changeWorkTime - 60);
   };
 
+  const handlePlusBreakClick = () => {
+    setBreakTime(breakTime + 60);
+    setChangeBreakTime(changeBreakTime + 60);
+  };
+
+  const handleMinusBreakClick = () => {
+    breakTime > 60 && setBreakTime(breakTime - 60);
+    changeBreakTime > 60 && setChangeBreakTime(changeBreakTime - 60);
+  };
+
   if (isCountdown && workTime === 0 && breakTime === 0) {
     setWorkTime(changeWorkTime);
     setBreakTime(changeBreakTime);
@@ -83,6 +96,15 @@ function App() {
         <Button name={isCountdown ? 'Pause' : 'Start'} onClick={handleStart} />
 
         <Button name="Reset" onClick={handleReset} />
+
+        <CardFooter>
+          <SessionButton simbol="+" onClick={handlePlusBreakClick} />
+          <div className="flexCol">
+            <span>Break Session</span>
+            <span>{breakTimeDisplay} min</span>
+          </div>
+          <SessionButton simbol="-" onClick={handleMinusBreakClick} />
+        </CardFooter>
       </Card>
     </div>
   );

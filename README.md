@@ -1,4 +1,4 @@
-A fim de estudar react além do bootcamp do IGTI, resolvi seguir o github: [https://github.com/florinpop17/app-ideas](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Pomodoro-Clock.md) para criar esse app Pomodoro Clock.
+A fim de estudar react além do bootcamp do IGTI, resolvi seguir o github: [florinpop17/app-ideas](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Pomodoro-Clock.md) para criar esse app Pomodoro Clock.
 
 Link do app [aqui](https://pomodoro-app.maycon-rodrigues.vercel.app/)
 

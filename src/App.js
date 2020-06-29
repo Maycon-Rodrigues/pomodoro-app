@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import useSound from 'use-sound';
+import boopSfx from './assets/sms-alert-5-daniel_simon.mp3';
 
 import { convertTimer } from './helper/converter';
 
@@ -17,27 +19,31 @@ function App() {
   const [changeBreakTime, setChangeBreakTime] = useState(breakTime);
   const [isCountdown, setIsCountdown] = useState(false);
 
+  const [play] = useSound(boopSfx);
+
   const workTimeConverted = convertTimer(workTime);
   const breakTimeConverted = convertTimer(breakTime);
 
   const breakTimeDisplay = changeBreakTime / 60;
 
   useEffect(() => {
+    if (isCountdown && workTime === 0) play();
     const timer =
       isCountdown &&
       workTime > 0 &&
       setInterval(() => setWorkTime(workTime - 1), 1000);
     return () => clearInterval(timer);
-  }, [isCountdown, workTime]);
+  }, [isCountdown, workTime, play]);
 
   useEffect(() => {
+    if (isCountdown && breakTime < 5) play();
     const timer =
       isCountdown &&
       workTime === 0 &&
       breakTime > 0 &&
       setInterval(() => setBreakTime(breakTime - 1), 1000);
     return () => clearInterval(timer);
-  }, [isCountdown, workTime, breakTime]);
+  }, [isCountdown, workTime, breakTime, play]);
 
   const handleStart = () => {
     setIsCountdown(!isCountdown);
